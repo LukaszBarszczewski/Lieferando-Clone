@@ -1,0 +1,320 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    background-color: rgb(255, 128, 0);
+}
+
+
+.header-links {
+    list-style-type: none;
+    display: flex;
+    gap: 16px;
+}
+
+
+.header-links a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.header-links a:hover {
+    text-decoration: underline;
+}
+
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+
+.main-post-order {
+    display: grid;
+    place-content: center;
+    margin: 32px;
+}
+
+
+.content {
+    flex: 1;
+}
+
+
+.headline-img {
+    width: 100%;
+}
+
+
+.headline-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 240px;
+}
+
+
+.menu-and-basket {
+    display: flex;
+    gap: 16px;
+}
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 32px 64px;
+    width: 60vw;
+    gap: 16px;
+}
+
+
+.restaurant-logo {
+    height: 50px;
+}
+
+
+.restaurant-logo img {
+    background-color: white;
+    width: 120px;
+    height: 120px;
+    transform: translateY(-80px);
+    border-radius: 62px;
+    object-fit: fill;
+}
+
+
+.shop-name h2 {
+    margin: 0;
+}
+
+
+.fa-star {
+    color: orange;
+}
+
+
+.rating {
+    margin-top: 16px;
+}
+
+
+.delivery-section {
+    display: flex;
+    gap: 16px;
+}
+
+
+.categories-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 16px;
+    border-radius: 18px;
+    border: solid 1px rgba(211, 211, 211, 0.781);
+}
+
+
+.category {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 18px;
+}
+
+
+.category:hover {
+    background-color: rgb(238, 235, 235);
+}
+
+
+.categories-section a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.category-headline {
+    font-size: 24px;
+}
+
+
+.all-category-menus {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.category-menu-description {
+    border-radius: 18px;
+    border: solid 1px rgba(211, 211, 211, 0.781);
+    padding: 16px;
+    cursor: pointer;
+}
+
+
+.category-menu-description:hover {
+    background-color: rgb(238, 235, 235);
+}
+
+
+.basket {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    border: solid 1px rgba(211, 211, 211, 0.781);
+    border-radius: 16px;
+    margin-right: 16px;
+}
+
+
+.basket-items {
+    width: 70%;
+    padding-bottom: 60px;
+    margin: 64px 0 32px 0;
+}
+
+
+.basket-item {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px rgb(0 0 0 / 8%);
+    padding-bottom: 16px;
+}
+
+
+.name-and-price {
+    display: flex;
+    justify-content: space-between;
+    margin: 32px 0 16px 0;
+}
+
+
+.quantity {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+.decrement-or-increment-button {
+    display: grid;
+    place-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    border: solid 1px rgba(211, 211, 211, 0.781);
+    cursor: pointer;
+}
+
+
+.decrement-or-increment-button:hover {
+    background-color: rgb(238, 235, 235);
+}
+
+
+.prices {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+
+.order-button {
+    background-color: rgb(255, 128, 0);
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    margin-top: 16px;
+    border-radius: 10px;
+    color: white;
+    border: solid 1px rgba(211, 211, 211, 0.781);
+    cursor: pointer;
+}
+
+
+.order-button:hover {
+    background-color: rgb(255, 171, 88);
+}
+
+
+.footer {
+    background-color: rgb(255, 128, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+
+.footer-content {
+    color: white;
+    list-style-type: none;
+    padding: 16px 32px;
+}
+
+
+.footer-content a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+
+.footer-links {
+    display: flex;
+    gap: 16px;
+}
+
+
+@media (max-width: 800px) {
+    .menu-and-basket {
+        flex-direction: column;
+    }
+
+    .basket {
+        margin: 16px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .header {
+        padding: 0;
+        justify-content: space-around;
+    }        
+
+    .header-links {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .footer a, li {
+        font-size: 12px;
+    }
+
+    .footer-content {
+        padding: 16px 16px;
+    }
+}

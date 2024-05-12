@@ -1,0 +1,441 @@
+let shoppingBasket = [];
+let names = [];
+let prices = [];
+let categories = ['beliebt', 'burger', 'menus', 'milkshakes'];
+
+let items = {
+    'beliebt': [
+        {
+            'name': 'BBQ & Chill Menü',
+            'description': '150g Beef Patty im Brioche Bun, Bacon, Cheddarkäse, Tomate, Zwiebelringe, BBQ-Soße + hausgemachte Pommes mit hausgemachtem Knoblauchdip + Milkshake nach Wahl.',
+            'priceText': '13,99',
+            'price': 13.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Chilli-Cheese-Madness Menü',
+            'description': '150g Beef Patty im Brioche Bun, Cheddarkäse, Jalapenos, Chili-Cheese-Soße + hausgemachte Pommes mit hausgemachtem Knoblauchdip + Milkshake nach Wahl.',
+            'priceText': '12,99',
+            'price': 12.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Strawberry Milkshake',
+            'description': 'Hausgemachter Erdbeershake.',
+            'priceText': '6,99',
+            'price': 6.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        }
+    ],
+    'burger': [
+        {
+            'name': 'BBQ & Chill',
+            'description': '150g Beef Patty im Brioche Bun, Bacon, Cheddarkäse, Tomate, Zwiebelringe, BBQ-Soße.',
+            'priceText': '8,99',
+            'price': 8.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Chilli-Cheese-Madness',
+            'description': '150g Beef Patty im Brioche Bun, Cheddarkäse, Jalapenos, Chili-Cheese-Soße.',
+            'priceText': '13,99',
+            'price': 7.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Chicken Deluxe',
+            'description': '150g Hähnchenbrustfilet in knuspriger Panade im Brioche Bun, Cheddarkäse, Eisbergsalat, Tomate, eingelegte Gurke, hausgemachte Sweet-Chili-Soße.',
+            'priceText': '7,99',
+            'price': 7.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        }
+    ],
+    'menus': [
+        {
+            'name': 'BBQ & Chill Menü',
+            'description': '150g Beef Patty im Brioche Bun, Bacon, Cheddarkäse, Tomate, Zwiebelringe, BBQ-Soße + hausgemachte Pommes mit hausgemachtem Knoblauchdip + Milkshake nach Wahl.',
+            'priceText': '13,99',
+            'price': 13.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Chilli-Cheese-Madness Menü',
+            'description': '150g Beef Patty im Brioche Bun, Cheddarkäse, Jalapenos, Chili-Cheese-Soße + hausgemachte Pommes mit hausgemachtem Knoblauchdip + Milkshake nach Wahl.',
+            'priceText': '12,99',
+            'price': 12.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Chicken Deluxe Menü',
+            'description': '150g Hähnchenbrustfilet in knuspriger Panade im Brioche Bun, Cheddarkäse, Eisbergsalat, Tomate, eingelegte Gurke, hausgemachte Sweet-Chili-Soße + hausgemachte Pommes mit hausgemachtem Knoblauchdip + Milkshake nach Wahl.',
+            'priceText': '12,99',
+            'price': 12.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        }
+    ],
+    'milkshakes': [
+        {
+            'name': 'Strawberry Milkshake',
+            'description': 'Hausgemachter Erdbeershake.',
+            'priceText': '6,99',
+            'price': 6.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Vanilla Milkshake',
+            'description': 'Hausgemachter Vanilleshake.',
+            'priceText': '6,99',
+            'price': 6.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        },
+        {
+            'name': 'Vanilla-Strawberry Milkshake',
+            'description': 'Hausgemachter Vanille-Erdbeer Shake.',
+            'priceText': '6,99',
+            'price': 6.99,
+            'inBasket': false,
+            'positionInBasket': 0
+        }
+    ]
+}
+
+
+function loadPage() {
+    loadShoppingBasket();
+    render();
+    includeHTML();
+}
+
+
+function render() {
+    renderShoppingBasket();
+    showZwischensumme();
+    showGesamt();
+    showOrderButton();
+    renderBeliebt();
+    renderBurger();
+    renderMenus();
+    renderMilkshakes();
+}
+
+
+function renderBeliebt() {
+    let categoryBeliebt = document.getElementById('categoryBeliebt');
+
+    for (let i = 0; i < items['beliebt'].length; i++) {
+        const item = items['beliebt'];
+        categoryBeliebt.innerHTML += generateMenuCardBeliebt(item, i);
+    }
+}
+
+
+let categoryIndex = 0;
+
+
+function generateMenuCardBeliebt(item, itemToBasket) {
+    return `
+        <section class="category-menu">
+            <div class="category-menu-description" onclick="addToBasket(${itemToBasket}, ${categoryIndex})">
+                <span><b>${item[itemToBasket]['name']}</b></span> <br><br>
+                <span>${item[itemToBasket]['description']}</span> <br><br>
+                <span><b>${item[itemToBasket]['priceText']}</b></span>
+            </div>
+        </section>
+    `;
+}
+
+
+function renderBurger() {
+    let categoryBurger = document.getElementById('categoryBurger');
+
+    for (let i = 0; i < items['burger'].length; i++) {
+        const item = items['burger'];
+        categoryBurger.innerHTML += generateMenuCardBurger(item, i);
+    }
+}
+
+
+let categoryIndexBurger = 1;
+
+
+function generateMenuCardBurger(item, itemToBasket) {
+    return `
+        <section class="category-menu">
+            <div class="category-menu-description" onclick="addToBasket(${itemToBasket}, ${categoryIndexBurger})">
+                <span><b>${item[itemToBasket]['name']}</b></span> <br><br>
+                <span>${item[itemToBasket]['description']}</span> <br><br>
+                <span><b>${item[itemToBasket]['priceText']}</b></span>
+            </div>
+        </section>
+    `;
+}
+
+
+function renderMenus() {
+    let categoryMenus = document.getElementById('categoryMenus');
+
+    for (let i = 0; i < items['menus'].length; i++) {
+        const item = items['menus'];
+        categoryMenus.innerHTML += generateMenuCardMenus(item, i);
+    }
+}
+
+
+let categoryIndexMenus = 2;
+
+
+function generateMenuCardMenus(item, itemToBasket) {
+    return `
+        <section class="category-menu">
+            <div class="category-menu-description" onclick="addToBasket(${itemToBasket}, ${categoryIndexMenus})">
+                <span><b>${item[itemToBasket]['name']}</b></span> <br><br>
+                <span>${item[itemToBasket]['description']}</span> <br><br>
+                <span><b>${item[itemToBasket]['priceText']}</b></span>
+            </div>
+        </section>
+    `;
+}
+
+
+function renderMilkshakes() {
+    let categoryMilkshakes = document.getElementById('categoryMilkshakes');
+
+    for (let i = 0; i < items['milkshakes'].length; i++) {
+        const item = items['milkshakes'];
+        categoryMilkshakes.innerHTML += generateMenuCardMilkshakes(item, i);
+    }
+}
+
+
+let categoryIndexMilkshakes = 3;
+
+
+function generateMenuCardMilkshakes(item, itemToBasket) {
+    return `
+        <section class="category-menu">
+            <div class="category-menu-description" onclick="addToBasket(${itemToBasket}, ${categoryIndexMilkshakes})">
+                <span><b>${item[itemToBasket]['name']}</b></span> <br><br>
+                <span>${item[itemToBasket]['description']}</span> <br><br>
+                <span><b>${item[itemToBasket]['priceText']}</b></span>
+            </div>
+        </section>
+    `;
+}
+
+
+function addToBasket(itemToBasket, categoryIndex) {
+    let selectedItem = items[categories[categoryIndex]][itemToBasket];
+    // Check if the item is already in the basket
+    const index = shoppingBasket.findIndex(item => item.name === selectedItem.name);
+    if (index !== -1) {
+        addToBasketIfItemInBasket(itemToBasket, categoryIndex);
+    } else {
+        addToBasketIfItemNotInBasket(itemToBasket, categoryIndex);
+    }
+    localStorage.setItem('shoppingBasket', JSON.stringify(shoppingBasket));
+    renderShoppingBasket();
+    showZwischensumme();
+    showGesamt();
+    showOrderButton();
+}
+
+
+let total = parseFloat(localStorage.getItem('total')) || localStorage.setItem('total', 0);
+
+
+function addToBasketIfItemInBasket(itemToBasket, categoryIndex) {
+    let selectedItem = items[categories[categoryIndex]][itemToBasket];
+    // Check if the item is already in the basket
+    const index = shoppingBasket.findIndex(item => item.name === selectedItem.name);
+    shoppingBasket[index].quantity += 1;
+    total += selectedItem.price;
+    localStorage.setItem('total', total);
+    showZwischensumme();
+    showGesamt();
+    showOrderButton();
+}
+
+
+function addToBasketIfItemNotInBasket(itemToBasket, categoryIndex) {
+    let selectedItem = items[categories[categoryIndex]][itemToBasket];
+    total += selectedItem.price;
+    localStorage.setItem('total', total);
+    shoppingBasket.push({
+        name: selectedItem.name,
+        price: selectedItem.price,
+        quantity: 1,
+        total: selectedItem.price
+    });
+    showZwischensumme();
+    showGesamt();
+    showOrderButton();
+}
+
+
+function loadShoppingBasket() {
+    const savedBasket = localStorage.getItem('shoppingBasket');
+    if (savedBasket) {
+        shoppingBasket = JSON.parse(savedBasket);
+    }
+}
+
+
+function renderShoppingBasket() {
+    let basketItems = document.getElementById('basketItems');
+    basketItems.innerHTML = '';
+
+    for (let i = 0; i < shoppingBasket.length; i++) {
+        const item = shoppingBasket[i];
+        // Ensure that each item has the 'quantity' property initialized
+        if (!item.hasOwnProperty('quantity')) {
+            item.quantity = 1;
+        }
+        basketItems.innerHTML += generateBasketItemHTML(item, i);
+    }
+}
+
+
+// toFixed(2) is used to format the price to two decimal places.
+function generateBasketItemHTML(item, index) {
+    return `
+        <div class="basket-item">
+            <div class="name-and-price">
+                <span><b>${item.name}</b></span>
+                <span>${(item.price * item.quantity).toFixed(2)} €</span> 
+            </div>
+            <div class="quantity">
+                <div class="decrement-or-increment-button" onclick="decrementQuantity(${index})">-</div>
+                <span>${item.quantity}</span>
+                <div class="decrement-or-increment-button" onclick="incrementQuantity(${index})">+</div>
+            </div>
+        </div>
+    `;
+}
+
+
+function incrementQuantity(index) {
+    shoppingBasket[index].quantity += 1;
+    let total = parseFloat(localStorage.getItem('total')) || shoppingBasket[index].price;
+    total += shoppingBasket[index].price;
+    localStorage.setItem('total', total);
+    localStorage.setItem('shoppingBasket', JSON.stringify(shoppingBasket));
+    renderShoppingBasket();
+    showZwischensumme();
+    showGesamt();
+    showOrderButton();
+}
+
+
+function decrementQuantity(index) {
+    let total = parseFloat(localStorage.getItem('total')) || shoppingBasket[index].price;
+    if (shoppingBasket[index].quantity > 1) {
+        shoppingBasket[index].quantity -= 1;
+        total -= shoppingBasket[index].price;
+    } else {
+        total -= shoppingBasket[index].price;
+        shoppingBasket.splice(index, 1);
+    }
+    localStorage.setItem('total', total);
+    localStorage.setItem('shoppingBasket', JSON.stringify(shoppingBasket));
+    renderShoppingBasket();
+    showZwischensumme();
+    showOrderButton();
+    showGesamt();
+}
+
+
+function showZwischensumme() {
+    let zwischensumme = document.getElementById('zwischensumme');
+    total = parseFloat(localStorage.getItem('total'));
+    if (!total || total < 1) {
+        zwischensumme.innerHTML = '<b>Zwischensumme:</b> 0,00€';
+    } else {
+        zwischensumme.innerHTML = '<b>Zwischensumme:</b> ' + generateZwischensumme(total) + ' €';
+    }
+}
+
+
+function generateZwischensumme(total) {
+    return total.toFixed(2);
+}
+
+
+function showGesamt() {
+    let gesamt = document.getElementById('gesamt');
+    total = parseFloat(localStorage.getItem('total'));
+    if (!total || total < 1) {
+        gesamt.innerHTML = '<b style="text-decoration: underline;">Gesamt:</b> 0,00€';
+    } else {
+        gesamt.innerHTML = '<b style="text-decoration: underline;">Gesamt:</b> ' + generateGesamt(total) + ' €';
+    }
+}
+
+
+function generateGesamt(total) {
+    let totalGesamt = total + 1;
+    return totalGesamt.toFixed(2);
+}
+
+
+function showOrderButton() {
+    let orderButton = document.getElementById('orderButton');
+    total = parseFloat(localStorage.getItem('total'));
+    if (!total || total < 15) {
+        orderButton.innerHTML = '<span>Mind. 15,00€</span>';
+    } else {
+        orderButton.innerHTML = 'Bestellen: ' + generateGesamt(total) + ' €';
+    }
+}
+
+
+function order() {
+    let main = document.getElementById('main');
+    total = parseFloat(localStorage.getItem('total'));
+    if (!total || total < 15) {
+        alert('Es tut uns Leid, der Mindestbestellwert wurde nicht erreicht.');
+    } else {
+        main.classList.add('main-post-order');
+        main.innerHTML = generatePostOrderMessage();
+    }
+    clearBasket();
+}
+
+
+function generatePostOrderMessage() {
+    return `
+        <h1>Vielen Dank für Deine Bestellung!</h1> <br>
+        <p>Dein Lieferlindo-Team wünscht guten Appetit. Bis bald!</p>
+        `;
+}
+
+
+function clearBasket()  {
+    localStorage.removeItem('shoppingBasket');
+    localStorage.removeItem('total');
+}
+
+
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html");
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
+    }
+}

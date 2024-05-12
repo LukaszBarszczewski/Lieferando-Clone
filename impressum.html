@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logo.svg" type="image/x-icon">
+    <title>Impressum</title>
+
+    <script src="script.js"></script>
+    
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        min-height: 100vh;
+    }
+
+    main {
+        display: flex;
+        justify-content: center;
+        max-width: 1440px;
+    }
+
+    .Impressum {
+        margin-top: 160px;
+        margin-bottom: 326px;
+    }
+
+    .Impressum h1 {
+        margin-left: 160px;
+    }
+
+    .impressum-text {
+        margin-left: 160px;
+        margin-right: 200px
+    }
+
+    h2 {
+        margin-left: 160px;
+        margin-top: 24px;
+    }
+
+    @media (max-width: 910px) {
+        .Impressum h1 {
+            margin-left: 32px;
+        }
+
+        .margin-left {
+            margin-left: 32px;
+            margin-right: 32px;
+        }
+    }
+
+    @media (max-width: 460px) {
+        .Impressum {
+            margin-bottom: 160px;
+        }
+
+       
+    }
+
+    @media (max-width: 360px) {
+        .Impressum h1 {
+            margin-left: 16px;
+        }
+
+        .margin-left {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+    }
+</style>
+
+<body onload="includeHTML()">
+
+    <!-- Include header -->
+    <header w3-include-html="templates/header.html"></header>
+
+    <main class="main-content">
+        <div class="Impressum margin-left">
+            <h1 class="margin-left">Impressum</h1>
+
+            <p class="impressum-text margin-left">Lukasz Barszczewski
+                <br />
+                Gewerbeschulstr. 67
+                <br />
+                42289 Wuppertal
+            </p>
+
+            <h2 class="margin-left">Kontakt</h2>
+            <p class="impressum-text margin-left">Telefon: 01731231231
+                <br />
+                E-Mail: lukaszbarszczewski@yahoo.de
+            </p>
+
+            <p class="impressum-text margin-left">Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
+
+        </div>
+    </main>
+    <footer class="footer" w3-include-html="templates/footer.html"></footer>
+
+    </footer>
+
+</body>
+
+</html>

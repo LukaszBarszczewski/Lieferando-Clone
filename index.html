@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logo.svg" type="image/x-icon">
+
+    <title>Lieferlindo</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <script src="https://kit.fontawesome.com/e978d994d5.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="loadPage()">
+
+    <!-- header -->
+    <header w3-include-html="templates/header.html"></header>
+
+    <!-- content -->
+    <main id="main">
+        <div class="content">
+            <div class="headline-img">
+                <img src="img/headline-img.jpg" alt="">
+            </div>
+
+
+            <section class="menu-and-basket">
+
+                <section class="menu">
+                    <div class="restaurant-logo">
+                        <img src="img/logo_shop.png" alt="">
+                    </div>
+
+                    <div class="shop-name">
+                        <h2>Chilli Vanilli Burger & Shakes</h2>
+                    </div>
+
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <span><b>4,2</b> (682)</span>
+                    </div>
+
+                    <section class="delivery-section">
+                        <div>
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>min. 15,00€</span>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-bicycle"></i>
+                            <span>1,00€</span>
+                        </div>
+                    </section>
+
+                    <div class="description">
+                        <span><b>Chilli Vanilli Burger & Shakes:</b> Hier dreht sich alles um den ultimativen
+                            Geschmackskick
+                            für jeden Gaumen. Tauche ein in unsere Welt voller saftiger Burger und hausgemachter Shakes,
+                            die genau deinen Style treffen. Mach dich bereit für den Geschmack, der deine Sinne rockt!
+                        </span>
+                    </div>
+
+                    <section class="categories-section">
+                        <a class="category" href="#beliebtNav">
+                            <div>Beliebt</div>
+                        </a>
+                        <a class="category" href="#burgerNav">
+                            <div>Burger</div>
+                        </a>
+                        <a class="category" href="#menusNav">
+                            <div>Menüs</div>
+                        </a>
+                        <a class="category" href="#milkshakesNav">
+                            <div>Milkshakes</div>
+                        </a>
+                    </section>
+
+                    <h2 id="beliebtNav">Beliebt</h2>
+
+                    <section class="all-category-menus" id="categoryBeliebt"></section>
+
+                    <h2 id="burgerNav">Burger</h2>
+
+                    <section class="all-category-menus" id="categoryBurger"></section>
+
+                    <h2 id="menusNav">Menüs</h2>
+
+                    <section class="all-category-menus" id="categoryMenus"></section>
+
+                    <h2 id="milkshakesNav">Milkshakes</h2>
+
+                    <section class="all-category-menus" id="categoryMilkshakes"></section>
+                </section>
+
+                <section class="basket">
+                    <h2>Warenkorb</h2>
+
+                    <div class="basket-items" id="basketItems"></div>
+
+                    <div class="prices">
+                        <span id="zwischensumme"></span>
+                        <span id="lieferkosten"><b>Lieferkosten:</b> 1,00 €</span>
+                        <span id="gesamt"></span>
+                        <div class="order-button" id="orderButton" onclick="order()"></div>
+                    </div>
+                </section>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer w3-include-html="templates/footer.html"></footer>
+
+</body>
+
+</html>
